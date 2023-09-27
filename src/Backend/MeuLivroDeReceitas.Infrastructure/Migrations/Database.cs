@@ -12,7 +12,8 @@ public static class Database
         var parametros = new DynamicParameters();
         parametros.Add("nome", nomeDatabase);
 
-        var registros = minhaConexao.Query("SELECT * FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = @nome", parametros);
+        var registros = minhaConexao
+            .Query<int>("SELECT COUNT(*) FROM sys.databases WHERE name = @nome", parametros);
 
         if (!registros.Any())
         {
