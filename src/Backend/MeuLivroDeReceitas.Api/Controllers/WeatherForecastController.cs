@@ -1,3 +1,4 @@
+using MeuLivroDeReceitas.Application.UseCases.Usuario.Registrar;
 using MeuLivroDeReceitas.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,11 +9,13 @@ namespace MeuLivroDeReceitas.Api.Controllers
     public class WeatherForecastController: ControllerBase
     {
         [HttpGet(Name = "GetWeatherForecast")]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            ResourceMensagensDeErro.Culture = new System.Globalization.CultureInfo("pt");
+            var usecase = new RegistrarUsuarioUseCase();
+            await usecase.Executar(new Comunicacao.Requisicoes.RequisicaoRegistrarUsuarioJson
+            {
 
-            var mensagem = ResourceMensagensDeErro.EMAIL_USUARIO_EM_BRANCO;
+            });
 
             return Ok();
         }

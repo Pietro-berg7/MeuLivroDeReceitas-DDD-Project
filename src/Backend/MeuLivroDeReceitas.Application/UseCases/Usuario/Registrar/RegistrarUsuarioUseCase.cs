@@ -1,12 +1,15 @@
 ﻿using MeuLivroDeReceitas.Comunicacao.Requisicoes;
+using MeuLivroDeReceitas.Exceptions.ExceptionsBase;
 
 namespace MeuLivroDeReceitas.Application.UseCases.Usuario.Registrar;
 
 public class RegistrarUsuarioUseCase
 {
-    public Task Executar(RequisicaoRegistrarUsuarioJson requisicao)
+    public async Task Executar(RequisicaoRegistrarUsuarioJson requisicao)
     {
-
+        Validar(requisicao); 
+        
+        //salvar no banco de dados
     }
 
     private void Validar(RequisicaoRegistrarUsuarioJson requisicao)
@@ -16,8 +19,8 @@ public class RegistrarUsuarioUseCase
 
         if (!resultado.IsValid)
         {
-            var mensagensDeErro = resultado.Errors.Select(error => error.ErrorMessage);
-            throw new Exception();
+            var mensagensDeErro = resultado.Errors.Select(error => error.ErrorMessage).ToList();
+            throw new ErrosDeValidacaoException(mensagensDeErro);
         }
     }
 }

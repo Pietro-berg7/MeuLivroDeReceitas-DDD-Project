@@ -1,3 +1,4 @@
+ using MeuLivroDeReceitas.Api.Filtros;
 using MeuLivroDeReceitas.Domain.Extension;
 using MeuLivroDeReceitas.Infrastructure;
 using MeuLivroDeReceitas.Infrastructure.Migrations;
@@ -12,6 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddRepositorio(builder.Configuration);
+
+builder.Services.AddMvc(options => options.Filters.Add(typeof(FiltroDasExceptions)));
 
 var app = builder.Build();
 
