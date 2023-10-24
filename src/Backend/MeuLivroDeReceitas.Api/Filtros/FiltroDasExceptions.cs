@@ -17,7 +17,7 @@ public class FiltroDasExceptions: IExceptionFilter
         }
         else
         {
-
+            LancarErroDesconhecido(context);
         }
     }
 

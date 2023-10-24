@@ -9,13 +9,15 @@ namespace MeuLivroDeReceitas.Api.Controllers
     public class WeatherForecastController: ControllerBase
     {
         [HttpGet(Name = "GetWeatherForecast")]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromServices] IRegistrarUsuarioUseCase useCase)
         {
-            var usecase = new RegistrarUsuarioUseCase();
-            await usecase.Executar(new Comunicacao.Requisicoes.RequisicaoRegistrarUsuarioJson
+            await useCase.Executar(new Comunicacao.Requisicoes.RequisicaoRegistrarUsuarioJson
             {
-
-            });
+                Email = "betotle@gmail.com",
+                Nome = "Betotle",
+                Senha = "123456",
+                Telefone = "37 9 1234-5678"
+            }); ;
 
             return Ok();
         }
