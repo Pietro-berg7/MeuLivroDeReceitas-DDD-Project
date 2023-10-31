@@ -11,7 +11,7 @@ namespace MeuLivroDeReceitas.Api.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public async Task<IActionResult> Get([FromServices] IRegistrarUsuarioUseCase useCase)
         {
-            await useCase.Executar(new Comunicacao.Requisicoes.RequisicaoRegistrarUsuarioJson
+            var resposta = await useCase.Executar(new Comunicacao.Requisicoes.RequisicaoRegistrarUsuarioJson
             {
                 Email = "betotle@gmail.com",
                 Nome = "Betotle",
@@ -19,7 +19,7 @@ namespace MeuLivroDeReceitas.Api.Controllers
                 Telefone = "37 9 1234-5678"
             }); ;
 
-            return Ok();
+            return Ok(resposta);
         }
     }
 }
