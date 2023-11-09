@@ -61,6 +61,15 @@ namespace MeuLivroDeReceitas.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O e-mail informado já está registrado na base de dados..
+        /// </summary>
+        public static string EMAIL_JA_REGISTRADO {
+            get {
+                return ResourceManager.GetString("EMAIL_JA_REGISTRADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O e-mail do usuário deve ser informado..
         /// </summary>
         public static string EMAIL_USUARIO_EM_BRANCO {
