@@ -3,11 +3,10 @@ using MeuLivroDeReceitas.Domain.Extension;
 using MeuLivroDeReceitas.Domain.Repositorios;
 using MeuLivroDeReceitas.Infrastructure.AcessoRepositorio;
 using MeuLivroDeReceitas.Infrastructure.AcessoRepositorio.Repositorio;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using FluentMigrator.Runner.Initialization;
-using Microsoft.EntityFrameworkCore;
 
 namespace MeuLivroDeReceitas.Infrastructure;
 
