@@ -6,7 +6,6 @@ using MeuLivroDeReceitas.Comunicacao.Respostas;
 using MeuLivroDeReceitas.Domain.Repositorios;
 using MeuLivroDeReceitas.Exceptions;
 using MeuLivroDeReceitas.Exceptions.ExceptionsBase;
-using MeuLivroDeReceitas.Infrastructure.AcessoRepositorio.Repositorio;
 
 namespace MeuLivroDeReceitas.Application.UseCases.Usuario.Registrar;
 

@@ -1,4 +1,4 @@
-﻿using MeuLivroDeReceitas.Infrastructure.AcessoRepositorio.Repositorio;
+﻿using MeuLivroDeReceitas.Domain.Repositorios;
 
 namespace MeuLivroDeReceitas.Infrastructure.AcessoRepositorio;
 
