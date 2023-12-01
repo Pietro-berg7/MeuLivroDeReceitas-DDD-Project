@@ -23,12 +23,17 @@ public static class Bootstrapper
 
     private static void AddContexto(IServiceCollection services, IConfiguration configurationManager)
     {
-        var connectionString = configurationManager.GetConexaoCompleta();
+        bool.TryParse(configurationManager.GetSection("Configuracoes:BancoDeDadosInMemory").Value, out bool bancoDeDadosInMemory);
 
-        services.AddDbContext<MeuLivroDeReceitasContext>(dbContextoOpcpes =>
+        if (!bancoDeDadosInMemory)
         {
-            dbContextoOpcpes.UseSqlServer(connectionString);
-        });
+            var connectionString = configurationManager.GetConexaoCompleta();
+
+            services.AddDbContext<MeuLivroDeReceitasContext>(dbContextoOpcpes =>
+            {
+                dbContextoOpcpes.UseSqlServer(connectionString);
+            });
+        }
     }
 
     private static void AddUnidadeDeTrabalho(IServiceCollection services)
@@ -45,12 +50,17 @@ public static class Bootstrapper
 
     public static void AddFluentMigrator(IServiceCollection services, IConfiguration configurationManager)
     {
-        services.AddFluentMigratorCore().ConfigureRunner(c =>
+        bool.TryParse(configurationManager.GetSection("Configuracoes:BancoDeDadosInMemory").Value, out bool bancoDeDadosInMemory);
+
+        if (!bancoDeDadosInMemory)
         {
-            c.AddSqlServer()
-                .WithGlobalConnectionString(configurationManager.GetConexaoCompleta())
-                .ScanIn(Assembly.Load("MeuLivroDeReceitas.Infrastructure"))
-                .For.All();
-        });
+            services.AddFluentMigratorCore().ConfigureRunner(c =>
+            {
+                c.AddSqlServer()
+                    .WithGlobalConnectionString(configurationManager.GetConexaoCompleta())
+                    .ScanIn(Assembly.Load("MeuLivroDeReceitas.Infrastructure"))
+                    .For.All();
+            });
+        }
     }
 }
