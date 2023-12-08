@@ -130,7 +130,7 @@
     <value>Erro desconhecido.</value>
   </data>
   <data name="LOGIN_INVALIDO" xml:space="preserve">
-    <value>O e-mail e/ou senha estão incorretos.</value>
+    <value>Seu e-mail e/ou senha estão incorretos.</value>
   </data>
   <data name="NOME_USUARIO_EM_BRANCO" xml:space="preserve">
     <value>O nome do usuário deve ser informado.</value>

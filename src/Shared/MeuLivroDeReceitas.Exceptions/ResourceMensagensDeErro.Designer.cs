@@ -97,7 +97,7 @@ namespace MeuLivroDeReceitas.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O e-mail e/ou senha estão incorretos..
+        ///   Looks up a localized string similar to Seu e-mail e/ou senha estão incorretos..
         /// </summary>
         public static string LOGIN_INVALIDO {
             get {

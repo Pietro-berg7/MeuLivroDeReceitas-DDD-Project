@@ -4,10 +4,8 @@ using MeuLivroDeReceitas.Comunicacao.Respostas;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MeuLivroDeReceitas.Api.Controllers
-{
-    [ApiController]
-    [Route("[controller]")]
-    public class UsuarioController: ControllerBase
+{    
+    public class UsuarioController: MeuLivroDeReceitasController
     {
         [HttpPost]
         [ProducesResponseType(typeof(RespostaUsuarioRegistradoJson), StatusCodes.Status201Created)]

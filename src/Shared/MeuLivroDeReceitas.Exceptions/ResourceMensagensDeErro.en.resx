@@ -130,7 +130,7 @@
     <value>Unknown error.</value>
   </data>
   <data name="LOGIN_INVALIDO" xml:space="preserve">
-    <value>The e-mail and/or password are incorrect.</value>
+    <value>Your e-mail and/or password are incorrect.</value>
   </data>
   <data name="NOME_USUARIO_EM_BRANCO" xml:space="preserve">
     <value>The user name is required.</value>
