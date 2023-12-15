@@ -11,10 +11,11 @@ public class UsuarioLogado: IUsuarioLogado
     private readonly TokenController _tokenController;
     private readonly IUsuarioReadOnlyRepositorio _repositorio;
 
-    public UsuarioLogado(IHttpContextAccessor httpContextAccessor, TokenController tokenController)
+    public UsuarioLogado(IHttpContextAccessor httpContextAccessor, TokenController tokenController, IUsuarioReadOnlyRepositorio repositorio)
     {
         _httpContextAccessor = httpContextAccessor;
         _tokenController = tokenController;
+        _repositorio = repositorio;
     }
 
     public async Task<Usuario> RecuperarUsuario()
