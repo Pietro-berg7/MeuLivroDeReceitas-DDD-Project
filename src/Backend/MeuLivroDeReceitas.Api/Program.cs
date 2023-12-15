@@ -72,4 +72,6 @@ void AtualizarBaseDeDados()
     }
 }
 
+#pragma warning disable CA1050, S3903, S1118
 public partial class Program { }
+#pragma warning disable CA1050, S3903, S1118

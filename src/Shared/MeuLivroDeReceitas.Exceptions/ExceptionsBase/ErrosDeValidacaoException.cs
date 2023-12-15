@@ -1,5 +1,8 @@
-﻿namespace MeuLivroDeReceitas.Exceptions.ExceptionsBase;
+﻿using System.Runtime.Serialization;
 
+namespace MeuLivroDeReceitas.Exceptions.ExceptionsBase;
+
+[Serializable]
 public class ErrosDeValidacaoException: MeuLivroDeReceitasException
 {
     public List<string> MensagensDeErro { get; set; }
@@ -8,4 +11,6 @@ public class ErrosDeValidacaoException: MeuLivroDeReceitasException
     {
         MensagensDeErro = mensagensDeErro;
     }
+
+    protected ErrosDeValidacaoException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 }
