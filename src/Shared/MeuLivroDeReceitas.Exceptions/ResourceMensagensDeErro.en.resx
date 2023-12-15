@@ -135,6 +135,9 @@
   <data name="NOME_USUARIO_EM_BRANCO" xml:space="preserve">
     <value>The user name is required.</value>
   </data>
+  <data name="SENHA_ATUAL_INVALIDA" xml:space="preserve">
+    <value>Current password is invalid.</value>
+  </data>
   <data name="SENHA_USUARIO_EM_BRANCO" xml:space="preserve">
     <value>The user password is required.</value>
   </data>
@@ -146,5 +149,11 @@
   </data>
   <data name="TELEFONE_USUARIO_INVALIDO" xml:space="preserve">
     <value>The phone number must be at the format XX X XXXX-XXXX</value>
+  </data>
+  <data name="TOKEN_EXPIRADO" xml:space="preserve">
+    <value>Log in again to the App.</value>
+  </data>
+  <data name="USUARIO_SEM_PERMISSAO" xml:space="preserve">
+    <value>You are not allowed to access this feature.</value>
   </data>
 </root>
