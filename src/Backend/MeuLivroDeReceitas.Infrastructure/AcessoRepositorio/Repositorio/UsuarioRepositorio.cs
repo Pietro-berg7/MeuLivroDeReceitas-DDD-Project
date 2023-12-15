@@ -38,6 +38,11 @@ public class UsuarioRepositorio: IUsuarioWriteOnlyRepositorio, IUsuarioReadOnlyR
             .FirstOrDefaultAsync(c => c.Email.Equals(email) && c.Senha.Equals(senha));
     }
 
+    public async Task<Usuario> RecuperarPorId(long id)
+    {
+        return await _contexto.Usuarios.FirstOrDefaultAsync(c => c.Id == id);
+    }
+
     public void Update(Usuario usuario)
     {
         _contexto.Usuarios.Update(usuario);

@@ -16,7 +16,6 @@ public static class Bootstrapper
     public static void AddRepositorio(this IServiceCollection services, IConfiguration configurationManager)
     {
         AddFluentMigrator(services, configurationManager);
-
         AddContexto(services, configurationManager);
         AddUnidadeDeTrabalho(services);
         AddRepositorios(services);
