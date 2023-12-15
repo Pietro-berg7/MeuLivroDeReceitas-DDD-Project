@@ -11,11 +11,11 @@ namespace MeuLivroDeReceitas.Application.UseCases.Usuario.AlterarSenha;
 public class AlterarSenhaUseCase: IAlterarSenhaUseCase
 {
     private readonly IUsuarioLogado _usuarioLogado;
-    private readonly IUpdateOnlyRepositorio _repositorio;
+    private readonly IUsuarioUpdateOnlyRepositorio _repositorio;
     private readonly EncriptadorDeSenha _encriptadorDeSenha;
     private readonly IUnidadeDeTrabalho _unidadeDeTrabalho;
 
-    public AlterarSenhaUseCase(IUsuarioLogado usuarioLogado, IUpdateOnlyRepositorio repositorio, EncriptadorDeSenha encriptadorDeSenha, IUnidadeDeTrabalho unidadeDeTrabalho)
+    public AlterarSenhaUseCase(IUsuarioLogado usuarioLogado, IUsuarioUpdateOnlyRepositorio repositorio, EncriptadorDeSenha encriptadorDeSenha, IUnidadeDeTrabalho unidadeDeTrabalho)
     {
         _repositorio = repositorio;
         _usuarioLogado = usuarioLogado;
