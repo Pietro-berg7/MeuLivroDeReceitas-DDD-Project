@@ -14,8 +14,13 @@ public class ReceitaRepositorio: IReceitaWriteOnlyRepositorio, IReceitaReadOnlyR
 
     public async Task<IList<Receita>> RecuperarTodasDoUsuario(long usuarioId)
     {
-        return await _contexto.Receitas.Where(r => r.UsuarioId == usuarioId).ToListAsync();
+        return await _contexto.Receitas
+            .AsNoTracking()
+            .Include(r => r.Ingredientes)
+            .Where(r => r.UsuarioId == usuarioId)
+            .ToListAsync();
     }
+
 
     public async Task Registrar(Receita receita)
     {
