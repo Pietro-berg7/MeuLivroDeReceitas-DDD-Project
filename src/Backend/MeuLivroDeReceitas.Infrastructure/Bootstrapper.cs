@@ -30,9 +30,9 @@ public static class Bootstrapper
         {
             var connectionString = configurationManager.GetConexaoCompleta();
 
-            services.AddDbContext<MeuLivroDeReceitasContext>(dbContextoOpcpes =>
+            services.AddDbContext<MeuLivroDeReceitasContext>(dbContextoOpcoes =>
             {
-                dbContextoOpcpes.UseSqlServer(connectionString);
+                dbContextoOpcoes.UseSqlServer(connectionString);
             });
         }
     }
