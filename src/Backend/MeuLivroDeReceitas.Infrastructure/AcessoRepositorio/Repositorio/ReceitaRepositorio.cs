@@ -19,7 +19,7 @@ public class ReceitaRepositorio: IReceitaWriteOnlyRepositorio, IReceitaReadOnlyR
             .Include(r => r.Ingredientes)
             .FirstOrDefaultAsync(r => r.Id == receitaId);
     }
-    
+
     async Task<Receita> IReceitaUpdateOnlyRepositorio.RecuperarPorId(long receitaId)
     {
         return await _contexto.Receitas
@@ -45,5 +45,12 @@ public class ReceitaRepositorio: IReceitaWriteOnlyRepositorio, IReceitaReadOnlyR
     public void Update(Receita receita)
     {
         _contexto.Receitas.Update(receita);
+    }
+
+    public async Task Deletar(long receitaId)
+    {
+        var receita = await _contexto.Receitas.FirstOrDefaultAsync(r => r.Id == receitaId);
+
+        _contexto.Receitas.Remove(receita);
     }
 }
