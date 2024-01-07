@@ -102,6 +102,9 @@ void AtualizarBaseDeDados()
     }
 }
 
+#pragma warning disable IDE0079 // Remove unnecessary suppression
 #pragma warning disable CA1050, S3903, S1118
 public partial class Program { }
 #pragma warning disable CA1050, S3903, S1118
+
+#pragma warning restore IDE0079 // Remove unnecessary suppression
