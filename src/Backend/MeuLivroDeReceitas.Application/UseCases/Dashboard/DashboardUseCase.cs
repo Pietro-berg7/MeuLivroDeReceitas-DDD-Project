@@ -2,7 +2,9 @@
 using MeuLivroDeReceitas.Application.Servicos.UsuarioLogado;
 using MeuLivroDeReceitas.Comunicacao.Requisicoes;
 using MeuLivroDeReceitas.Comunicacao.Respostas;
+using MeuLivroDeReceitas.Domain.Extension;
 using MeuLivroDeReceitas.Domain.Repositorios.Receita;
+using System.Globalization;
 
 namespace MeuLivroDeReceitas.Application.UseCases.Dashboard;
 public class DashboardUseCase: IDashboardUseCase
@@ -44,7 +46,7 @@ public class DashboardUseCase: IDashboardUseCase
         if (!string.IsNullOrWhiteSpace(requisicao.TituloOuIngrediente))
         {
             receitasFiltradas = receitas
-                .Where(r => r.Titulo.Contains(requisicao.TituloOuIngrediente) || r.Ingredientes.Any(ingrediente => ingrediente.Produto.Contains(requisicao.TituloOuIngrediente))).ToList();
+                .Where(r => r.Titulo.CompararSemConsiderarAcentoUpperCase(requisicao.TituloOuIngrediente) || r.Ingredientes.Any(ingrediente => ingrediente.Produto.CompararSemConsiderarAcentoUpperCase(requisicao.TituloOuIngrediente))).ToList();
         }
 
         return receitasFiltradas;
