@@ -1,4 +1,6 @@
+using HashidsNet;
 using MeuLivroDeReceitas.Api.Filtros;
+using MeuLivroDeReceitas.Api.Filtros.Swagger;
 using MeuLivroDeReceitas.Api.Middleware;
 using MeuLivroDeReceitas.Application;
 using MeuLivroDeReceitas.Application.Servicos.Automapper;
@@ -6,6 +8,7 @@ using MeuLivroDeReceitas.Domain.Extension;
 using MeuLivroDeReceitas.Infrastructure;
 using MeuLivroDeReceitas.Infrastructure.AcessoRepositorio;
 using MeuLivroDeReceitas.Infrastructure.Migrations;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +21,34 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(option =>
+{
+    option.OperationFilter<HashidsOperationFilter>();
+    option.SwaggerDoc("v1", new OpenApiInfo { Title = "Meu Livro de Receitas API", Version = "1.0" });
+    option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter a valid token",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "Bearer"
+    });
+    option.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type=ReferenceType.SecurityScheme,
+                    Id="Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication(builder.Configuration);
@@ -27,7 +57,7 @@ builder.Services.AddMvc(options => options.Filters.Add(typeof(FiltroDasException
 
 builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(cfg =>
 {
-    cfg.AddProfile(new AutoMapperConfiguracao());
+    cfg.AddProfile(new AutoMapperConfiguracao(provider.GetService<IHashids>()));
 }).CreateMapper());
 
 builder.Services.AddScoped<UsuarioAutenticadoAttribute>();
