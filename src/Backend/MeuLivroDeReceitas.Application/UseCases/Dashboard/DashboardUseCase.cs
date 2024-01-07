@@ -49,6 +49,6 @@ public class DashboardUseCase: IDashboardUseCase
                 .Where(r => r.Titulo.CompararSemConsiderarAcentoUpperCase(requisicao.TituloOuIngrediente) || r.Ingredientes.Any(ingrediente => ingrediente.Produto.CompararSemConsiderarAcentoUpperCase(requisicao.TituloOuIngrediente))).ToList();
         }
 
-        return receitasFiltradas;
+        return receitasFiltradas.OrderBy(c => c.Titulo).ToList();
     }
 }
