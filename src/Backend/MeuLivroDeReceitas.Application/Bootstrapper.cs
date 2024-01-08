@@ -1,7 +1,12 @@
 ﻿using MeuLivroDeReceitas.Application.Servicos.Criptografia;
 using MeuLivroDeReceitas.Application.Servicos.Token;
 using MeuLivroDeReceitas.Application.Servicos.UsuarioLogado;
+using MeuLivroDeReceitas.Application.UseCases.Conexao.AceitarConexao;
 using MeuLivroDeReceitas.Application.UseCases.Conexao.GerarQRCode;
+using MeuLivroDeReceitas.Application.UseCases.Conexao.QRCodeLido;
+using MeuLivroDeReceitas.Application.UseCases.Conexao.Recuperar;
+using MeuLivroDeReceitas.Application.UseCases.Conexao.RecusarConexao;
+using MeuLivroDeReceitas.Application.UseCases.Conexao.Remover;
 using MeuLivroDeReceitas.Application.UseCases.Dashboard;
 using MeuLivroDeReceitas.Application.UseCases.Login.FazerLogin;
 using MeuLivroDeReceitas.Application.UseCases.Receita.Atualizar;
@@ -69,6 +74,12 @@ public static class Bootstrapper
             .AddScoped<IAtualizarReceitaUseCase, AtualizarReceitaUseCase>()
             .AddScoped<IDeletarReceitaUseCase, DeletarReceitaUseCase>()
             .AddScoped<IRecuperarPerfilUseCase, RecuperarPerfilUseCase>()
-            .AddScoped<IGerarQRCodeUseCase, GerarQRCodeUseCase>();
+            .AddScoped<IGerarQRCodeUseCase, GerarQRCodeUseCase>()
+            .AddScoped<IQRCodeLidoUseCase, QRCodeLidoUseCase>()
+            .AddScoped<IQRCodeLidoUseCase, QRCodeLidoUseCase>()
+            .AddScoped<IRecusarConexaoUseCase, RecusarConexaoUseCase>()
+            .AddScoped<IAceitarConexaoUseCase, AceitarConexaoUseCase>()
+            .AddScoped<IRecuperarTodasConexoesUseCase, RecuperarTodasConexoesUseCase>()
+            .AddScoped<IRemoverConexaoUseCase, RemoverConexaoUseCase>();
     }
 }

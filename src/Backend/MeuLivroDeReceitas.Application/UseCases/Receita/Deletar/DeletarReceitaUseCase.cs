@@ -13,7 +13,6 @@ public class DeletarReceitaUseCase: IDeletarReceitaUseCase
     private readonly IReceitaWriteOnlyRepositorio _repositorioWriteOnly;
     private readonly IReceitaReadOnlyRepositorio _repositorioReadOnly;
     private readonly IUsuarioLogado _usuarioLogado;
-    private readonly IMapper _mapper;
     private readonly IUnidadeDeTrabalho _unidadeDeTrabalho;
 
     public DeletarReceitaUseCase(

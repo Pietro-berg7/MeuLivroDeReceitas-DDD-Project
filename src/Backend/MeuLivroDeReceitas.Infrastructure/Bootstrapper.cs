@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using MeuLivroDeReceitas.Domain.Repositorios.Codigo;
+using MeuLivroDeReceitas.Domain.Repositorios.Conexao;
 
 namespace MeuLivroDeReceitas.Infrastructure;
 
@@ -52,7 +53,10 @@ public static class Bootstrapper
             .AddScoped<IReceitaWriteOnlyRepositorio, ReceitaRepositorio>()
             .AddScoped<IReceitaReadOnlyRepositorio, ReceitaRepositorio>()
             .AddScoped<IReceitaUpdateOnlyRepositorio, ReceitaRepositorio>()
-            .AddScoped<ICodigoWriteOnlyRepositorio, CodigoRepositorio>();
+            .AddScoped<ICodigoWriteOnlyRepositorio, CodigoRepositorio>()
+            .AddScoped<ICodigoReadOnlyRepositorio, CodigoRepositorio>()
+            .AddScoped<IConexaoReadOnlyRepositorio, ConexaoRepositorio>()
+            .AddScoped<IConexaoWriteOnlyRepositorio, ConexaoRepositorio>();
     }
 
     public static void AddFluentMigrator(IServiceCollection services, IConfiguration configurationManager)
