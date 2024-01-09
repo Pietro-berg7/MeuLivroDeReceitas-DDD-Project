@@ -19,7 +19,8 @@ public class ConexaoRepositorio : IConexaoReadOnlyRepositorio, IConexaoWriteOnly
 
     public async Task<IList<Usuario>> RecuperarDoUsuario(long usuarioId)
     {
-        return await _contexto.Conexoes.AsNoTracking()
+        return await _contexto.Conexoes
+            .AsNoTracking()
             .Include(c => c.ConectadoComUsuario)
             .Where(c => c.UsuarioId == usuarioId)
             .Select(c => c.ConectadoComUsuario)
