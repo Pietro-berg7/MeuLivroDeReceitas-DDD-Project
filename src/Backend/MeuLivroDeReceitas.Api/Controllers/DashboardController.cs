@@ -1,4 +1,4 @@
-using MeuLivroDeReceitas.Api.Filtros;
+using MeuLivroDeReceitas.Api.Filtros.UsuarioLogado;
 using MeuLivroDeReceitas.Application.UseCases.Dashboard;
 using MeuLivroDeReceitas.Comunicacao.Requisicoes;
 using MeuLivroDeReceitas.Comunicacao.Respostas;
@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MeuLivroDeReceitas.Api.Controllers;
 
+[ServiceFilter(typeof(UsuarioAutenticadoAttribute))]
 public class DashboardController: MeuLivroDeReceitasController
-{    
+{
+
     [HttpPut]
     [ProducesResponseType(typeof(RespostaDashboardJson), StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ServiceFilter(typeof(UsuarioAutenticadoAttribute))]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]    
     public async Task<IActionResult> RecuperarDashboard(
         [FromServices] IDashboardUseCase useCase,
         [FromBody] RequisicaoDashboardJson request)

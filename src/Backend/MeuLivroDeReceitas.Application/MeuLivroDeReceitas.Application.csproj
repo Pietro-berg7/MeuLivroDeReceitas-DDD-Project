@@ -12,6 +12,7 @@
     <PackageReference Include="FluentValidation" Version="11.9.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    <PackageReference Include="QRCoder" Version="1.4.2" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
   </ItemGroup>
 
@@ -19,6 +20,10 @@
     <ProjectReference Include="..\..\Shared\MeuLivroDeReceitas.Comunicacao\MeuLivroDeReceitas.Comunicacao.csproj" />
     <ProjectReference Include="..\..\Shared\MeuLivroDeReceitas.Exceptions\MeuLivroDeReceitas.Exceptions.csproj" />
     <ProjectReference Include="..\MeuLivroDeReceitas.Domain\MeuLivroDeReceitas.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UseCases\Usuario\RecuperarPerfil\" />
   </ItemGroup>
 
 </Project>
