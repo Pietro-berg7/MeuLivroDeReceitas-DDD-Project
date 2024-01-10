@@ -11,6 +11,8 @@ using MeuLivroDeReceitas.Infrastructure;
 using MeuLivroDeReceitas.Infrastructure.AcessoRepositorio;
 using MeuLivroDeReceitas.Infrastructure.Migrations;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -72,7 +74,19 @@ builder.Services.AddScoped<UsuarioAutenticadoAttribute>();
 
 builder.Services.AddSignalR();
 
+builder.Services.AddHealthChecks().AddDbContextCheck<MeuLivroDeReceitasContext>();
+
 var app = builder.Build();
+
+app.MapHealthChecks("/health", new HealthCheckOptions
+{
+    AllowCachingResponses = false,
+    ResultStatusCodes =
+    {
+        [HealthStatus.Healthy] = StatusCodes.Status200OK,
+        [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
+    }
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
